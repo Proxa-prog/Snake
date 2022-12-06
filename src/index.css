@@ -3,18 +3,47 @@
     width: 512px;
 }
 
-.scoreBlock {
+.results {
+    background-color: aqua;
+}
+
+.scoreWrapper {
     background-color: aquamarine;
     height: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.scoreBlock {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 10px;
 }
 
 .score {
     font-size: 16px;
     font-weight: 700;
+}
+
+.buttonStart {
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: darkorange;
+}
+
+.buttonPause {
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(255, 51, 0);
+}
+
+.buttonPause {
+    background-color: rgb(255, 0, 64);
 }
 
 .gameField {
@@ -45,4 +74,19 @@
     background-color: darkorange;
     width: 16px;
     height: 16px;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    width: 100%;
+    display: flex;
+}
+
+td {
+    display: flex;
+    justify-content: center;
+    width: 50%;
 }
