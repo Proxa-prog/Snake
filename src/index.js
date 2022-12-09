@@ -233,7 +233,39 @@ function gameOver(snakeCoordinates) {
         }
     }
 }
+function chooseDirection(direction, snakeCoordinates, snake) {
+    if (direction === "down") {
+        if (snakeCoordinates[1] < fieldLength) {
+            snake.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY ="' + (+snakeCoordinates[1] + 1) + '"]'));
+        } else {
+            snake.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY ="1"]'));
+        }
+    }
 
+    if (direction === "up") {
+        if (snakeCoordinates[1] > 1) {
+            snake.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY ="' + (+snakeCoordinates[1] - 1) + '"]'));
+        } else {
+            snake.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY ="32"]'));
+        }
+    }
+
+    if (direction === "left") {
+        if (snakeCoordinates[0] > 1) {
+            snake.unshift(document.querySelector('[posX ="' + (+snakeCoordinates[0] - 1) + '"][posY ="' + snakeCoordinates[1] + '"]'));
+        } else {
+            snake.unshift(document.querySelector('[posX ="32"][posY ="' + snakeCoordinates[1] + '"]'));
+        }
+    }
+
+    if (direction === "right") {
+        if (snakeCoordinates[0] < fieldLength) {
+            snake.unshift(document.querySelector('[posX ="' + (+snakeCoordinates[0] + 1) + '"][posY ="' + snakeCoordinates[1] + '"]'));
+        } else {
+            snake.unshift(document.querySelector('[posX ="1"][posY ="' + snakeCoordinates[1] + '"]'));
+        }
+    }
+}
 
 // Логика движения
 
@@ -246,38 +278,7 @@ function move() {
 
     eatFruit(snakeCoordinates);
     gameOver(snakeCoordinates);
-
-    if (direction === "down") {
-        if (snakeCoordinates[1] < fieldLength) {
-            snake.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY ="' + (+snakeCoordinates[1] + 1) + '"]'))
-        } else {
-            snake.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY ="1"]'))
-        }
-    }
-
-    if (direction === "up") {
-        if (snakeCoordinates[1] > 1) {
-            snake.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY ="' + (+snakeCoordinates[1] - 1) + '"]'))
-        } else {
-            snake.unshift(document.querySelector('[posX ="' + snakeCoordinates[0] + '"][posY ="32"]'))
-        }
-    }
-
-    if (direction === "left") {
-        if (snakeCoordinates[0] > 1) {
-            snake.unshift(document.querySelector('[posX ="' + (+snakeCoordinates[0] - 1) + '"][posY ="' + snakeCoordinates[1] + '"]'))
-        } else {
-            snake.unshift(document.querySelector('[posX ="32"][posY ="' + snakeCoordinates[1] + '"]'))
-        }
-    }
-
-    if (direction === "right") {
-        if (snakeCoordinates[0] < fieldLength) {
-            snake.unshift(document.querySelector('[posX ="' + (+snakeCoordinates[0] + 1) + '"][posY ="' + snakeCoordinates[1] + '"]'))
-        } else {
-            snake.unshift(document.querySelector('[posX ="1"][posY ="' + snakeCoordinates[1] + '"]'))
-        }
-    }
+    chooseDirection(direction, snakeCoordinates, snake);
     
     snake[0].classList.add('snakeHead');
 
